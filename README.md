@@ -1,6 +1,6 @@
 A thin proxy in front of the [skills.sh API](https://www.skills.sh/docs/api). skills.sh only accepts
 Vercel's own OIDC token as auth, which is only minted for apps actually deployed on Vercel — so
-non-Vercel clients (e.g. the exodus Electron app) call this BFF instead, and it attaches a fresh
+non-Vercel clients (e.g. the Actovia desktop app) call this BFF instead, and it attaches a fresh
 `VERCEL_OIDC_TOKEN` server-side before forwarding to `https://skills.sh/api/v1/*`.
 
 Prerequisites:

@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "my-app",
+      "name": "skills-md-bff",
       "dependencies": {
         "@vercel/oidc": "^3.8.8",
         "hono": "^4.13.8",
