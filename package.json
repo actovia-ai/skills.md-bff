@@ -4,7 +4,7 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@vercel/oidc": "^3.8.8",
+    "@vercel/oidc": "^4.0.1",
     "hono": "^4.13.8"
   },
   "devDependencies": {
