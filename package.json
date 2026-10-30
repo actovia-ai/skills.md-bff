@@ -1,5 +1,5 @@
 {
-  "name": "skills-md-bff",
+  "name": "skills-sh-bff",
   "scripts": {
     "dev": "bun run --hot src/index.ts"
   },

@@ -4,7 +4,7 @@ Hi! We are really excited that you are interested in contributing to Actovia. Be
 
 ## Repo Setup
 
-The skills relay ([actovia-ai/skills.md-bff](https://github.com/actovia-ai/skills.md-bff), [skills-md.yancey.app](https://skills-md.yancey.app)) is a small Bun service between skills.sh and the Actovia desktop app and CLI.
+The skills relay ([actovia-ai/skills.sh-bff](https://github.com/actovia-ai/skills.sh-bff), [skills-sh.yancey.app](https://skills-sh.yancey.app)) is a small Bun service between skills.sh and the Actovia desktop app and CLI.
 
 ```bash
 bun install
@@ -28,10 +28,10 @@ bun run dev   # hot-reloading server; see the README for the routes
 
 - Make sure the checks above pass.
 
-- Commit messages follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit): releases and the changelog are generated from them.
+- Commit messages follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.sh#commit): releases and the changelog are generated from them.
 
 - Responses are a contract the desktop app and the CLI both read; change one only with both.
 
 ## Reporting Security Issues
 
-Please do not open an issue for a security problem; see [SECURITY.md](SECURITY.md).
+Please do not open an issue for a security problem; see [SECURITY.sh](SECURITY.sh).

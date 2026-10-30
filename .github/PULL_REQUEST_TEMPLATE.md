@@ -19,8 +19,8 @@
 
 ### Before submitting the PR, please make sure you do the following
 
-- [ ] Read the [Contributing Guidelines](https://github.com/actovia-ai/skills.md-bff/blob/main/CONTRIBUTING.md).
-- [ ] Follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit).
+- [ ] Read the [Contributing Guidelines](https://github.com/actovia-ai/skills.sh-bff/blob/main/CONTRIBUTING.sh).
+- [ ] Follow the [Angular Team's Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.sh#commit).
 - [ ] Check that there isn't already a PR that solves the problem the same way.
 - [ ] Describe **what** the PR solves, or reference the issue it solves (e.g. `fixes #123`).
 - [ ] Ideally, include tests that fail without this PR but pass with it.
