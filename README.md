@@ -1,37 +1,33 @@
-A thin proxy in front of the [skills.sh API](https://www.skills.sh/docs/api). skills.sh only accepts
-Vercel's own OIDC token as auth, which is only minted for apps actually deployed on Vercel — so
-non-Vercel clients (e.g. the Actovia desktop app) call this BFF instead, and it attaches a fresh
-`VERCEL_OIDC_TOKEN` server-side before forwarding to `https://skills.sh/api/v1/*`.
+# Actovia skills.sh BFF
 
-Prerequisites:
+A small Hono relay used by [Actovia desktop](https://github.com/actovia-ai/actovia) and the [CLI](https://github.com/actovia-ai/cli). Requests under `/api/v1/*` are forwarded to the fixed `https://skills.sh` upstream with a fresh Vercel OIDC token, keeping that credential out of clients. The configured public relay is `https://skills-sh.yancey.app`.
 
-- [Vercel CLI](https://vercel.com/docs/cli) installed globally
-- In the Vercel dashboard: project **Settings → OIDC Federation**, toggled on (required for
-  skills.sh to verify the token)
+## Behavior
 
-To develop locally:
+`src/index.ts` exports the Hono app for Vercel. It preserves the upstream path, query, method, body, status and content type, and forwards rate-limit / Retry-After headers. If OIDC token acquisition fails, it returns `500 oidc_token_unavailable`. The root is a simple health/welcome response, not the skills API. This relay serves skill metadata and files; installation and local skill state belong to the desktop or CLI.
 
-```
-npm install
-vc link            # one-time, links this directory to the Vercel project
-vc env pull        # writes VERCEL_OIDC_TOKEN into .env.local (~12h validity)
-vc dev
+## Development
+
+```bash
+bun install
+bun run dev   # Hono local development via Bun
 ```
 
-```
-open http://localhost:3000
+Actual upstream requests require a valid Vercel OIDC environment. For the linked Vercel project, enable OIDC Federation and use the Vercel CLI to run with its development environment:
+
+```bash
+vercel link
+vercel env pull .env.local
+vercel dev
 ```
 
-To build locally:
+Tokens expire; refresh the local environment when needed. Never commit `.env.local`, OIDC tokens or `.vercel` project credentials.
 
-```
-npm install
-vc build
+## Deploy
+
+```bash
+vercel build
+vercel deploy
 ```
 
-To deploy:
-
-```
-npm install
-vc deploy
-```
+`vercel deploy` creates a deployment; production promotion is a separate hosting decision. Verify `/api/v1/registry` against the deployment URL and inspect response status/rate-limit headers. Clients may override their relay URL with `ACTOVIA_SKILLS_BFF_URL`.
